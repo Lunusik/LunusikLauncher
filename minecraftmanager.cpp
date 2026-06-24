@@ -107,7 +107,7 @@ void MinecraftManager::startMinecraft(){
     QString separator = QDir::listSeparator();
     QString librariesStr = librariesList.join(separator) + separator;
     const QString uuid = QUuid::createUuid().toString();
-    librariesStr += data.gameDir + "/client.jar";
+    librariesStr += data.gameDir + "/" + data.version + ".jar";
     QMap<QString, QString> vars = {
         {"auth_player_name", data.username},
         {"version_name", data.version},

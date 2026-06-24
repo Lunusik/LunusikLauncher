@@ -125,7 +125,7 @@ const QList<QString> VersionsManager::getDownloadedVersions() {
     for (const QString &vName : versionDirs) {
         QDir vDir(rootDir.filePath(vName));
         
-        bool hasClient = vDir.exists("client.jar");
+        bool hasClient = vDir.exists(vName + ".jar");
         bool hasManifest = vDir.exists(vName + ".json");
 
         if (hasClient && hasManifest) {
