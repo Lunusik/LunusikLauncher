@@ -93,7 +93,7 @@ body {
 .nav-link:hover {
     color: var(--text-main);
 }
-
+.mobile-about{display: none;}
 .btn {
     display: inline-block;
     padding: 12px 28px;
@@ -519,5 +519,44 @@ body {
     .section-title.left { text-align: center; }
     .features-grid, .download-grid { flex-direction: column; }
     .nav { display: none; }
+    .mobile-about {
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        
+        background: var(--panel-bg);
+        color: var(--text-main) !important;
+        border: 1px solid var(--panel-border);
+        border-radius: 8px;
+        
+        padding: 8px 14px !important;
+        font-size: 0.85rem !important;
+        font-weight: 500 !important;
+        text-decoration: none !important;
+        white-space: nowrap !important;
+        
+        margin-left: auto !important;
+        margin-right: 10px !important;
+        
+        transition: all 0.2s ease !important;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .mobile-about:active {
+        background: rgba(138, 43, 226, 0.2) !important;
+        border-color: var(--accent-purple) !important;
+        transform: scale(0.96);
+    }
+    
     .mockup-card { transform: none; }
+
+    .drawer-content {
+        max-width: 100%;
+        right: -100%;
+        padding: 30px 20px;
+    }
+    
+    .drawer-header h2 {
+        font-size: 1.5rem;
+    }
 }

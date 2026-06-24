@@ -13,16 +13,18 @@ document.addEventListener("DOMContentLoaded", () => {
     hiddenElements.forEach((el) => observer.observe(el));
 
 
-    const aboutLink = document.querySelector('a[href="#about"]');
+    const aboutLinks = document.querySelectorAll('a[href="#about"]');
     const drawer = document.getElementById('about-drawer');
     const closeBtn = document.getElementById('drawer-close-btn');
     const closeOverlay = document.getElementById('drawer-close-overlay');
 
-    if (aboutLink && drawer) {
-        aboutLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            drawer.classList.add('active');
-            document.body.style.overflow = 'hidden';
+    if (aboutLinks.length > 0 && drawer) {
+        aboutLinks.forEach((link) => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                drawer.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
         });
     }
 
