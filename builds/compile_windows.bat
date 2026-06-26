@@ -39,6 +39,12 @@ copy /Y "LunusikLauncher.exe" "build/" > nul
 cd "build" > nul
 windeployqt --no-translations "LunusikLauncher.exe" > nul
 
+echo %BLUE%=== Copying licenses to the build ===%RESET%
+
+copy /Y "..\..\..\LICENSE" "." > nul
+copy /Y "..\..\..\COPYING.md" "." > nul
+
+
 
 echo %GREEN%=== Successful compilation ===%RESET%
 pause
