@@ -185,11 +185,9 @@ body {
     width: 100%;
     max-width: 450px;
     height: 280px;
-    background: var(--panel-bg);
     border: 1px solid var(--panel-border);
     border-radius: 20px;
     backdrop-filter: blur(16px);
-    padding: 20px;
     position: relative;
     box-shadow: 0 20px 50px rgba(0,0,0,0.3);
     transform: perspective(1000px) rotateY(-15deg) rotateX(10deg);
@@ -498,7 +496,7 @@ body {
     margin: 10px 0;
 }
 
-.drawer-qt-info, .drawer-github {
+.drawer-qt-info, .drawer-github, .drawer-mingw-info {
     color: var(--text-muted);
 }
 
