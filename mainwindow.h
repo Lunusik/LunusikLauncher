@@ -186,6 +186,8 @@ signals:
     void downloadMinecraft(const QString text, const QString id, const QString name, const QString hashManifest, const QString url);
     void setMinecraftDirectoryDM(const QString minecraftDirectory);
     void setMinecraftDirectoryVM(const QString minecraftDirectory);
+
+    void showWindow();
 private:
     QThread* threadDownloadManager;
     QThread* threadVersionsManager;

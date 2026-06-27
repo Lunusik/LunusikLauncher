@@ -26,7 +26,8 @@ signals:
     void error(QString message);
 
     void extactNativesStart();
-    void updatedVersions();
+    bool updatedVersions();
+    void renderVersions(const QList<VersionData> versions, const QList<LatestVersionData> latestVersions);
 private:
     // --- INSTALLATION & DOWNLOADS ---
     QNetworkAccessManager *manager = nullptr;

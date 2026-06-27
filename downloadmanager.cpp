@@ -83,6 +83,9 @@ void DownloadManager::downloadMinecraft(const QString text, const QString id, co
     QList<DownloadTask> downloadTasks;
     downloadTasks.append({client["url"].toString(), minecraftDirectory + pathVersion + name + ".jar", client["sha1"].toString(), client["size"].toInt()});
 
+    const QJsonObject server = versionManifest["downloads"].toObject()["server"].toObject();
+    downloadTasks.append({server["url"].toString(), minecraftDirectory + pathVersion + "server-" + name + ".jar", server["sha1"].toString(), server["size"].toInt()});
+
     QString pathToNatives = minecraftDirectory + pathVersion + "natives";
 
     for (const QJsonValue &lib_val : libraries ){
@@ -168,7 +171,7 @@ QList<DownloadTask> DownloadManager::downloadJava(const QString name){
 
     if (isStopDownload) return downloadTasks;
     const QString urlManifest = "https://launchermeta.mojang.com/v1/products/java-runtime/2ec0cc96c44e5a76b9c8b7c39df7210883d12871/all.json";
-    const QString hashManifest = "2ec0cc96c44e5a76b9c8b7c39df7210883d12871";
+    const QString hashManifest = "0f47bc501bbc5009f34bdedb5a232d2ecce640fa";
     QJsonObject manifest;
 
     installOneFile(urlManifest, minecraftDirectory + "/Java/javaManifest.json", &manifest, hashManifest);
@@ -347,7 +350,8 @@ bool DownloadManager::installOneFile(const QString &url, const QString &path, QJ
     QDir dir;
     QFileInfo fileinfo(path);
     QFile file(path);
-
+    qDebug() << isExistsAndValid(file, hashFile);
+    file.close();
     if(isExistsAndValid(file, hashFile)){
         if (outJsonData){
             if (file.isOpen()){
@@ -493,7 +497,7 @@ void DownloadManager::updateVersions() {
 
         if (reply->error() != QNetworkReply::NoError) {
             qWarning() << "Loading error:" << reply->errorString();
-            emit updatedVersions();
+            if (!emit updatedVersions()){emit renderVersions({}, {});}
             return;
         }
 

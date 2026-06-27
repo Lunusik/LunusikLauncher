@@ -15,6 +15,7 @@ MainWindow::MainWindow(QSplashScreen *splash, QWidget *parent)
     VERSIONS_MANAGER->moveToThread(threadVersionsManager);
 
     connect(VERSIONS_MANAGER, &VersionsManager::renderVersions, this, &MainWindow::renderVersions);
+    connect(DOWNLOAD_MANAGER, &DownloadManager::renderVersions, this, &MainWindow::renderVersions);
     connect(this, &MainWindow::setMinecraftDirectoryVM, VERSIONS_MANAGER, &VersionsManager::setMinecraftDirectory);
     connect(this, &MainWindow::loadVersions, VERSIONS_MANAGER, &VersionsManager::loadVersions);
 
@@ -791,7 +792,7 @@ MainWindow::MainWindow(QSplashScreen *splash, QWidget *parent)
     setLanguage(lang);
     
     auto connection = std::make_shared<QMetaObject::Connection>();
-    *connection = connect(VERSIONS_MANAGER, &VersionsManager::showWindow, this, [this, splash, connection]() {
+    *connection = connect(this, &MainWindow::showWindow, this, [this, splash, connection]() {
         this->show();
         splash->finish(this);
         splash->deleteLater();
@@ -1201,6 +1202,7 @@ void MainWindow::renderVersions(const QList<VersionData> versions, const QList<L
         addLatestVersionItem(lvd);
     }
     applyFilter();
+    emit showWindow();
 }
 QWidget* MainWindow::addVersionItem(const VersionData &versionData) {
     auto *item = new QWidget();
