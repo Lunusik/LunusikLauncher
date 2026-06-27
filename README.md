@@ -1,12 +1,12 @@
-# <img src="docs/images/logo.png" height="32"> LunusikLauncher
+# <img src="images/logo.png" height="32"> LunusikLauncher
 **Lunusik Launcher** is a modern, fast and smooth launcher for Minecraft, written in C++ using the QT framework.
 <br>
 <details>
   <summary>Screenshots</summary>
   <br>
   <p align="center">
-    <img src="screenshots/main_screen.png" alt="Launcher Main Screen" width="450" style="margin: 5px;">
-    <img src="screenshots/settings_screen.png" alt="Launcher Settings Menu" width="450" style="margin: 5px;">
+    <img src="images/screenshots/main_screen.png" alt="Launcher Main Screen" width="450" style="margin: 5px;">
+    <img src="images/screenshots/settings_screen.png" alt="Launcher Settings Menu" width="450" style="margin: 5px;">
   </p>
 </details>
 <br>
