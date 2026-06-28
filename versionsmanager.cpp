@@ -111,7 +111,6 @@ bool VersionsManager::readVersions() {
         }
     }
     emit renderVersions(versions_data, latest_versions_data);
-    emit showWindow();
     return true;
 }
 const QList<QString> VersionsManager::getDownloadedVersions() {

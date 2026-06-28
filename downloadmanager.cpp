@@ -350,7 +350,6 @@ bool DownloadManager::installOneFile(const QString &url, const QString &path, QJ
     QDir dir;
     QFileInfo fileinfo(path);
     QFile file(path);
-    qDebug() << isExistsAndValid(file, hashFile);
     file.close();
     if(isExistsAndValid(file, hashFile)){
         if (outJsonData){
